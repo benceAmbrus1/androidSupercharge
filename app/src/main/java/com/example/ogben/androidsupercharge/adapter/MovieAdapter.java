@@ -12,13 +12,14 @@ import android.widget.TextView;
 import com.example.ogben.androidsupercharge.R;
 import com.example.ogben.androidsupercharge.model.Movie;
 import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class MovieAdapter extends ArrayAdapter<Movie> implements Filterable {
 
     private int listItemLayout;
     public Context context;
-    private String IMAGEBASEPATH="http://image.tmdb.org/t/p/w342";
+    private String IMAGEBASEPATH="http://image.tmdb.org/t/p/w342//";
 
     public MovieAdapter(Context context, int layoutId, List<Movie> movies) {
         super(context, layoutId, movies);
@@ -46,9 +47,9 @@ public class MovieAdapter extends ArrayAdapter<Movie> implements Filterable {
         viewHolder.title.setText(movie.getTitle());
         viewHolder.releaseDate.setText(movie.getReleaseDate());
         viewHolder.language.setText(movie.getOriginalLanguage());
-        String image_url = IMAGEBASEPATH + movie.getPosterPath();
+        String imageUrl = IMAGEBASEPATH + movie.getPosterPath();
         Picasso.with(context)
-                .load(image_url)
+                .load(imageUrl)
                 .placeholder(android.R.drawable.sym_def_app_icon)
                 .into(viewHolder.movieImage);
 
