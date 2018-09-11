@@ -11,6 +11,7 @@ import java.util.List;
 
 public class MovieAdapter extends ArrayAdapter<Movie> {
 
+
     public MovieAdapter(Context context, int layoutId, List<Movie> movies) {
         super(context, layoutId, movies);
     }

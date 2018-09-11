@@ -13,10 +13,14 @@ public class Movie {
     @SerializedName("title")
     private String title;
 
-    public Movie(String posterPath, String releaseDate, String title) {
+    @SerializedName("original_language")
+    private String originalLanguage;
+
+    public Movie(String posterPath, String releaseDate, String title, String originalLanguage) {
         this.posterPath = posterPath;
         this.releaseDate = releaseDate;
         this.title = title;
+        this.originalLanguage = originalLanguage;
     }
 
     public String getPosterPath() {
@@ -29,5 +33,9 @@ public class Movie {
 
     public String getTitle() {
         return title;
+    }
+
+    public String getOriginalLanguage() {
+        return originalLanguage;
     }
 }
