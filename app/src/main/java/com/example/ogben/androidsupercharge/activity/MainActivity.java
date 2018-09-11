@@ -1,7 +1,9 @@
-package com.example.ogben.androidsupercharge;
+package com.example.ogben.androidsupercharge.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.ogben.androidsupercharge.R;
 
 public class MainActivity extends AppCompatActivity {
 
