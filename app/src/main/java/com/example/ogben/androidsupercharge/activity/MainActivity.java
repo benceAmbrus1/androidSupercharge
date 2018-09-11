@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private final static String API_KEY = "92290e0f78d9487afe3e01292483c2e3";
     private ListView mainListView;
     private Button loadButton;
-    private TextView textView;
+    private TextView mainOverview;
     private ArrayAdapter<Movie> adapter;
     private static Retrofit retrofit;
 
@@ -44,13 +44,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mainListView = findViewById(R.id.main_list_view);
         loadButton = findViewById(R.id.load_movies_button);
-        textView = findViewById(R.id.main_text_view);
+        mainOverview = findViewById(R.id.main_text_view);
 
         loadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 joinAPIAndGetMovies();
-                textView.setText("Api connected");
+                Toast.makeText(MainActivity.this, "API Connected", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -75,7 +75,8 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Movie movie = (Movie) parent.getAdapter().getItem(position);
-                        Toast.makeText(MainActivity.this, movie.getOverview(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, "Popularity: " + movie.getPopularity(), Toast.LENGTH_LONG).show();
+                        mainOverview.setText(movie.getOverview());
                     }
                 });
                 listView.setAdapter(adapter);
