@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.ogben.androidsupercharge.R;
 import com.example.ogben.androidsupercharge.model.Movie;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private final static String API_KEY = "92290e0f78d9487afe3e01292483c2e3";
     private ListView mainListView;
     private Button loadButton;
+    private TextView textView;
     private ArrayAdapter<Movie> adapter;
     private static Retrofit retrofit;
 
@@ -38,11 +40,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mainListView = findViewById(R.id.main_list_view);
         loadButton = findViewById(R.id.load_movies_button);
+        textView = findViewById(R.id.main_text_view);
 
         loadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 joinAPIandGetMovies();
+                textView.setText("Api connected");
             }
         });
     }
