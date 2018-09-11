@@ -10,10 +10,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.ogben.androidsupercharge.R;
+import com.example.ogben.androidsupercharge.adapter.MovieAdapter;
 import com.example.ogben.androidsupercharge.model.Movie;
 import com.example.ogben.androidsupercharge.model.MoviePage;
 import com.example.ogben.androidsupercharge.service.MovieAPIService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -45,13 +47,13 @@ public class MainActivity extends AppCompatActivity {
         loadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                joinAPIandGetMovies();
+                joinAPIAndGetMovies();
                 textView.setText("Api connected");
             }
         });
     }
 
-    private void joinAPIandGetMovies(){
+    private void joinAPIAndGetMovies(){
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASEURL)
@@ -65,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<MoviePage> call, Response<MoviePage> response) {
                 List<Movie> movies = response.body().getResults();
+                adapter = new MovieAdapter(getApplicationContext(), R.layout.movie_layout,  new ArrayList<>(movies));
+                ListView listView = findViewById(R.id.main_list_view);
+                listView.setAdapter(adapter);
             }
             @Override
             public void onFailure(Call<MoviePage> call, Throwable throwable) {
