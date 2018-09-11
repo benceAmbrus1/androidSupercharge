@@ -19,16 +19,25 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/load_movies_button"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:text="Load" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="248dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:text="Button" />
 
             <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:text="TextView" />
+
         </LinearLayout>
 
         <ListView
