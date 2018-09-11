@@ -1,5 +1,6 @@
 package com.example.ogben.androidsupercharge.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private Button loadButton;
     private TextView mainOverview;
     private ArrayAdapter<Movie> adapter;
-    private static Retrofit retrofit;
+    private Retrofit retrofit;
+    private Button filterButton;
 
 
     @Override
@@ -45,12 +47,21 @@ public class MainActivity extends AppCompatActivity {
         mainListView = findViewById(R.id.main_list_view);
         loadButton = findViewById(R.id.load_movies_button);
         mainOverview = findViewById(R.id.main_text_view);
+        filterButton = findViewById(R.id.filter_button);
 
         loadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 joinAPIAndGetMovies();
                 Toast.makeText(MainActivity.this, "API Connected", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        filterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent filterIntent = new Intent(getApplicationContext(), FilterActivity.class);
+                startActivity(filterIntent);
             }
         });
     }

@@ -5,16 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ogben.androidsupercharge.R;
 import com.example.ogben.androidsupercharge.model.Movie;
 import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
-public class MovieAdapter extends ArrayAdapter<Movie> {
+public class MovieAdapter extends ArrayAdapter<Movie> implements Filterable {
 
     private int listItemLayout;
     public Context context;
