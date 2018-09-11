@@ -4,10 +4,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ogben.androidsupercharge.R;
 import com.example.ogben.androidsupercharge.adapter.MovieAdapter;
@@ -69,6 +71,13 @@ public class MainActivity extends AppCompatActivity {
                 List<Movie> movies = response.body().getResults();
                 adapter = new MovieAdapter(getApplicationContext(), R.layout.movie_layout,  new ArrayList<>(movies));
                 ListView listView = findViewById(R.id.main_list_view);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                    @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Movie movie = (Movie) parent.getAdapter().getItem(position);
+                        Toast.makeText(MainActivity.this, movie.getOverview(), Toast.LENGTH_LONG).show();
+                    }
+                });
                 listView.setAdapter(adapter);
             }
             @Override
